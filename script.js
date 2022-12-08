@@ -24,12 +24,12 @@ fetch('data.csv')
     let results;
     if (words.length === 2) {
       results = lines.filter(line =>
-        line.split(',')[0].toLowerCase().includes(words[0]) &&
-        line.split(',')[1].toLowerCase().includes(words[1])
+        line.split(',')[0].toLowerCase().startsWith(words[0]) &&
+        line.split(',')[1].toLowerCase().startsWith(words[1])
       );
     } else {
       results = lines.filter(line =>
-        line.split(',')[0].toLowerCase().includes(words[0])
+        line.split(',')[0].toLowerCase().startsWith(words[0])
       );
     }
 

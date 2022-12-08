@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSV Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="script.js"></script>
+    <style>
+      form {
+        margin: 20px auto;
+        width: 500px;
+      }
+      input, button {
+        padding: 10px;
+        font-size: 16px;
+      }
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+      td, th {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+      th {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-inline justify-content-center">
+        <div class="form-group">
+          <!-- <label for="search-term">Enter the last name you're looking for:</label> -->
+          <input type="text" class="form-control pl-2" id="search-term" placeholder="Enter a last name">
+        </div>
+        <button type="submit" class="btn btn-primary pr-2">Search</button>
+      </form>
+      <table class="table mx-auto" style="display: inline-table;">
+        <thead id="column-names">
+          <!-- Column names will be added here -->
+        </thead>
+        <tbody id="results">
+        </tbody>
+      </table>
+    </div>
+  </body>
+  
+  
+  
+</html>
+
+    
+    
+    
+    

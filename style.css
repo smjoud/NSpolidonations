@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #e6e6e6;
+}
+
+thead, tbody {
+  display: block;
+}
+
+tbody {
+  height: 300px;
+  overflow-y: auto;
+}
+
+tr {
+  width: 100%;
+}
+
+th, td {
+  width: 16.66%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+

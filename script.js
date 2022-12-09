@@ -53,6 +53,8 @@ fetch('data.csv')
         columnNamesRow.appendChild(th);
       });
 
+
+
       // Display the results in a table
       const resultsTable = document.querySelector('#results');
       resultsTable.innerHTML = '';
@@ -82,5 +84,52 @@ fetch('data.csv')
         
       });
     }
+    if (searchTerm === '') {
+      // Hide the summary box if the search input is empty
+      document.querySelector('#summary-box').style.display = 'none';
+    } else {
+      // Show the summary box if the search input is not empty
+      document.querySelector('#summary-box').style.display = 'block';
+
+      // Calculate the sum of the values in the fourth column
+      let sum = 0;
+      results.forEach(result => {
+        const value = result.split(',')[3];
+        if (value) {
+          sum += parseInt(value);
+        }
+      });
+
+      // Update the summary box with the calculated sum
+      const summaryBox = document.querySelector('#summary-box');
+      summaryBox.innerHTML = '';
+      const summaryElement = document.createElement('p');
+      summaryElement.innerText = `Total: ${sum}`;
+      summaryBox.appendChild(summaryElement);
+    }
+
+// Calculate the sum of the values in the fourth column
+let sum = 0;
+results.forEach(result => {
+  const value = result.split(',')[3];
+  if (value) {
+    sum += parseInt(value);
+  }
+});
+
+// Format the sum value using the toLocaleString() method
+const sumString = sum.toLocaleString('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0, maximumFractionDigits: sum % 1 === 0 ? 0 : 2 });
+
+
+// Update the summary box with the calculated sum
+const summaryBox = document.querySelector('#summary-box');
+summaryBox.innerHTML = '';
+const summaryElement = document.createElement('p');
+summaryElement.innerText = `Total: ${sumString}`;
+summaryBox.appendChild(summaryElement);
+
+
+
   });
 });
+

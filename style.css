@@ -1,29 +1,51 @@
+form {
+  margin: 20px auto;
+  width: 500px;
+}
+input, button {
+  padding: 10px;
+  font-size: 16px;
+}
 table {
-  width: 100%;
+  margin: 20px auto;
   border-collapse: collapse;
 }
-
-thead {
-  background-color: #e6e6e6;
-}
-
-thead, tbody {
-  display: block;
-}
-
-tbody {
-  height: 300px;
-  overflow-y: auto;
-}
-
-tr {
-  width: 100%;
-}
-
-th, td {
-  width: 16.66%;
+td, th {
+  border: 1px solid #ddd;
   padding: 10px;
-  border: 1px solid #e6e6e6;
-  text-align: left;
+}
+th {
+  background-color: #ddd;
 }
 
+h1 {
+font-family: "Montserrat", sans-serif;
+font-weight: 800;
+
+}
+
+  /* Add the magnifying glass icon to the right side of the input element */
+  .fa-search {
+    font-size: 20px;
+    color: #333;
+  }
+
+  /* Summary box addition */
+  #summary-box {
+    text-align: center;
+  
+    display: none;
+
+  }
+
+  /* Media Queries */
+
+  @media (max-width: 1068px) {
+    .container {
+      max-width: 100%;
+    }
+    table {
+      font-size: 24px;
+    }
+    
+  }

@@ -12,7 +12,7 @@
 
   </head>
   <body>
-    <div class="container mt-5 table-responsive">
+    <div class="container mt-5 pt-5 table-responsive">
       <h1 class="text-center">NS Political Donations</h1>
       <form class="form-inline justify-content-center">
         <div class="form-group">
@@ -30,16 +30,23 @@
         <tbody id="results">
         </tbody>
       </table>
-    </div>
-    <div class="container mt-5">
-      <div id="summary-box" class="card bg-light mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Total</h5>
-          <p class="card-text"></p>
+      <div id="summary-box">
+        <div class="donation-box">
+        <strong># of donations:</strong><br><div id="number-of-donations">
+          <i class="fa fa-number-sign"></i>
+          <span></span>
+        </div>
+        </div>
+        <div class="amount-box">
+        <div id="total-amount">
+          <strong>Total amount:<br></strong>
+          <span></span>
         </div>
       </div>
     </div>
-
+    </div>
+    
+    
     
     <!-- Footer -->
 <footer class="bg-link text-center ">
@@ -62,7 +69,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © SMJ 
+    <p class="text-light">© SMJ </p>
     
   </div>
   <!-- Copyright -->

@@ -83,53 +83,51 @@ fetch('data.csv')
 
         
       });
+
+      
+      
     }
-    if (searchTerm === '') {
-      // Hide the summary box if the search input is empty
-      document.querySelector('#summary-box').style.display = 'none';
-    } else {
-      // Show the summary box if the search input is not empty
-      document.querySelector('#summary-box').style.display = 'block';
+// Define a function to calculate and display the summary information
+const updateSummary = () => {
+  // Get the number of donations from the number of rows in the results table
+  const numberOfDonations = document.querySelectorAll('#results tr').length; // subtract 1 to exclude the header row
 
-      // Calculate the sum of the values in the fourth column
-      let sum = 0;
-      results.forEach(result => {
-        const value = result.split(',')[3];
-        if (value) {
-          sum += parseInt(value);
-        }
-      });
+  const totalAmount = Array.from(document.querySelectorAll('#results td:nth-child(4)')) // get the values in the fourth column
+  .map(td => parseInt(td.innerText))
+  .filter(amount => !isNaN(amount)) // filter out NaN values
+  .reduce((acc, amount) => acc + amount, 0);
 
-      // Update the summary box with the calculated sum
-      const summaryBox = document.querySelector('#summary-box');
-      summaryBox.innerHTML = '';
-      const summaryElement = document.createElement('p');
-      summaryElement.innerText = `Total: ${sum}`;
-      summaryBox.appendChild(summaryElement);
-    }
 
-// Calculate the sum of the values in the fourth column
-let sum = 0;
-results.forEach(result => {
-  const value = result.split(',')[3];
-  if (value) {
-    sum += parseInt(value);
+
+  // Display the number of donations and the total amount in the summary box
+  const numberOfDonationsElement = document.querySelector('#number-of-donations span');
+  numberOfDonationsElement.innerText = numberOfDonations;
+
+  const totalAmountElement = document.querySelector('#total-amount span');
+  totalAmountElement.innerText = totalAmount;
+
+  // Show the summary box
+  const summaryBox = document.querySelector('#summary-box');
+  summaryBox.style.display = 'block';
+};
+
+
+// Call the updateSummary function after the results table has been updated with the search results
+input.addEventListener('keyup', () => {
+  // Code to search the CSV data and display the results...
+
+  // Call the updateSummary function after the results table has been updated only if there are search results
+  if (results.length > 0) {
+    updateSummary();
   }
 });
 
-// Format the sum value using the toLocaleString() method
-const sumString = sum.toLocaleString('en-CA', { style: 'currency', currency: 'CAD', minimumFractionDigits: 0, maximumFractionDigits: sum % 1 === 0 ? 0 : 2 });
-
-
-// Update the summary box with the calculated sum
-const summaryBox = document.querySelector('#summary-box');
-summaryBox.innerHTML = '';
-const summaryElement = document.createElement('p');
-summaryElement.innerText = `Total: ${sumString}`;
-summaryBox.appendChild(summaryElement);
-
-
-
   });
+  
+
+
+  
 });
+
+
 

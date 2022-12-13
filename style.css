@@ -9,11 +9,14 @@ input, button {
 table {
   margin: 20px auto;
   border-collapse: collapse;
+  border-radius:20px
 }
 td, th {
   border: 1px solid #ddd;
   padding: 10px;
 }
+
+
 th {
   background-color: #ddd;
 }
@@ -24,19 +27,67 @@ font-weight: 800;
 
 }
 
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(337deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
+background-size: 400% 400%;
+  animation: anim 10s infinite ease-in-out;
+}
+  @keyframes anim {
+    0% {
+background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position:0 50%;
+    }
+  }
+
+
+
+.container {
+  background-color: #fff;
+}
+
+
+
+.form-control {
+border-radius: 20px;
+}
+
   /* Add the magnifying glass icon to the right side of the input element */
   .fa-search {
     font-size: 20px;
     color: #333;
   }
 
-  /* Summary box addition */
   #summary-box {
     text-align: center;
-  
     display: none;
-
+    background-color: #eaeaea;
+    box-shadow: 0px 4px 4px rgba(158, 158, 158, 0.25);
+    margin-top: 20px;
+    width:20vw;
+    align-content: center;
+    margin: 20px auto;
+    border-radius:5px;
   }
+  
+  #summary-box > div {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  #summary-box .fa-number-sign,
+  #summary-box .fa-money-bill-alt {
+    font-size: 2em;
+  }
+  
+  
 
   /* Media Queries */
 
@@ -46,6 +97,23 @@ font-weight: 800;
     }
     table {
       font-size: 24px;
+    }
+
+    body {
+font-size: 1.2em;
+    }
+
+    h1 {
+font-size: 4.4em;
+    }
+
+    .form-control {
+      font-size: 1.4em;
+      padding: 0.75em 1.5em;
+    }
+    
+    #summary-box {
+      width:40vw;
     }
     
   }

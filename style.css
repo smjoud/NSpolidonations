@@ -128,6 +128,8 @@ font-size: 4.4em;
     user-select: none; /* prevent zoom on double-tap on modern browsers */
     -webkit-touch-callout: none; /* prevent callout on iOS */
     -webkit-tap-highlight-color: transparent; /* prevent highlight on iOS */
+    -webkit-text-size-adjust: 100%; /* prevent zoom on focus on iOS */
   }
+  
   
   

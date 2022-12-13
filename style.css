@@ -126,5 +126,8 @@ font-size: 4.4em;
     -moz-user-select: none; /* prevent zoom on double-tap on Android */
     -ms-user-select: none; /* prevent zoom on double-tap on Internet Explorer */
     user-select: none; /* prevent zoom on double-tap on modern browsers */
+    -webkit-touch-callout: none; /* prevent callout on iOS */
+    -webkit-tap-highlight-color: transparent; /* prevent highlight on iOS */
   }
+  
   

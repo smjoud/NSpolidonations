@@ -1,0 +1,143 @@
+form {
+  margin: 20px auto;
+  width: 500px;
+}
+input, button {
+  padding: 10px;
+  font-size: 16px;
+}
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-radius:20px
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+
+th {
+  background-color: #ddd;
+}
+
+h1 {
+font-family: "Montserrat", sans-serif;
+font-weight: 800;
+
+}
+
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(337deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
+background-size: 400% 400%;
+  animation: anim 10s infinite ease-in-out;
+}
+  @keyframes anim {
+    0% {
+background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position:0 50%;
+    }
+  }
+
+
+
+.container {
+  background-color: #fff;
+}
+
+
+
+.form-control {
+border-radius: 20px;
+}
+
+  /* Add the magnifying glass icon to the right side of the input element */
+  .fa-search {
+    font-size: 20px;
+    color: #333;
+  }
+
+  #summary-box {
+    text-align: center;
+    display: none;
+    background-color: #eaeaea;
+    box-shadow: 0px 4px 4px rgba(158, 158, 158, 0.25);
+    margin-top: 20px;
+    width:20vw;
+    align-content: center;
+    margin: 20px auto;
+    border-radius:5px;
+  }
+  
+  #summary-box > div {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  #summary-box .fa-number-sign,
+  #summary-box .fa-money-bill-alt {
+    font-size: 2em;
+  }
+  
+  
+
+  /* Media Queries 
+
+  @media screen (max-width: 400px) {
+    .container {
+      max-width: 100%;
+    }
+    table {
+      font-size: 24px;
+    }
+
+    body {
+font-size: 1.2em;
+    }
+
+    h1 {
+font-size: 4.4em;
+    }
+
+    .form-control {
+      font-size: 16px;
+      padding: 0.75em 1.5em;
+    }
+    
+    #summary-box {
+      width:40vw;
+    }
+    
+  } */
+
+
+
+  input[type="text"] {
+    font-size: 16px; /* or the desired font size for the input */
+    -webkit-user-select: none; /* prevent zoom on double-tap on iOS */
+    -moz-user-select: none; /* prevent zoom on double-tap on Android */
+    -ms-user-select: none; /* prevent zoom on double-tap on Internet Explorer */
+    user-select: none; /* prevent zoom on double-tap on modern browsers */
+    -webkit-touch-callout: none; /* prevent callout on iOS */
+    -webkit-tap-highlight-color: transparent; /* prevent highlight on iOS */
+    -webkit-text-size-adjust: 100%; /* prevent zoom on focus on iOS */
+  }
+  
+  @media screen and (max-width: 400px) {
+    .container {
+      width: 100%;
+    }
+    table {
+      width: 100%;
+    }
+  }
+  
+  

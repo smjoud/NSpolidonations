@@ -60,44 +60,74 @@ fetch('data.csv')
       resultsTable.innerHTML = '';
       results.forEach(result => {
         const tr = document.createElement('tr');
-        const party = result.split(',')[4];
+        
         // Color the row blue if the fifth column contains "PC"
-        if (["PC", "NDP", "Liberal"].some(v => party === v)) {
-          if(party === "PC") tr.style.backgroundColor = "#639ee0";
-          else if(party === "NDP") tr.style.backgroundColor = "orange";
-          else tr.style.backgroundColor = "red";
+        if (result.split(',')[4] === "PC") {
+          tr.style.backgroundColor = "#639ee0";
         }
+
+        if (result.split(',')[4] === "NDP") {
+          tr.style.backgroundColor = "orange";
+        }
+
+        if (result.split(',')[4] === "Liberal") {
+          tr.style.backgroundColor = "red";
+        }
+        
         result.split(',').forEach(column => {
           const td = document.createElement('td');
           td.innerText = column;
           tr.appendChild(td);
         });
         resultsTable.appendChild(tr);
+
+        
       });
 
-
-      // Define a function to calculate and display the summary information
-      const updateSummary = () => {
-        // Get the number of donations from the number of rows in the results table
-        const numberOfDonations = document.querySelectorAll('#results tr').length - 1; // subtract 1 to exclude the header row
-
-        const totalAmount = Array.from(document.querySelectorAll('#results td:nth-child(4)')) // get the values in the fourth column
-        .map(td => parseInt(td.innerText))
-        .filter(amount => !isNaN(amount)) // filter out NaN values
-        .reduce((acc, amount) => acc + amount, 0);
-
-
-        // Display the number of donations and the total amount in the summary box
-        const numberOfDonationsElement = document.querySelector('#number-of-donations span');
-        numberOfDonationsElement.innerText = numberOfDonations;
-
-        const totalAmountElement = document.querySelector('#total-amount span');
-        totalAmountElement.innerText = totalAmount;
-      };
-
-      // Call the updateSummary function initially
-      updateSummary();
-
+      
+      
     }
-  });
+// Define a function to calculate and display the summary information
+const updateSummary = () => {
+  // Get the number of donations from the number of rows in the results table
+  const numberOfDonations = document.querySelectorAll('#results tr').length; // subtract 1 to exclude the header row
+
+  const totalAmount = Array.from(document.querySelectorAll('#results td:nth-child(4)')) // get the values in the fourth column
+  .map(td => parseInt(td.innerText))
+  .filter(amount => !isNaN(amount)) // filter out NaN values
+  .reduce((acc, amount) => acc + amount, 0);
+
+
+
+  // Display the number of donations and the total amount in the summary box
+  const numberOfDonationsElement = document.querySelector('#number-of-donations span');
+  numberOfDonationsElement.innerText = numberOfDonations;
+
+  const totalAmountElement = document.querySelector('#total-amount span');
+  totalAmountElement.innerText = totalAmount;
+
+  // Show the summary box
+  const summaryBox = document.querySelector('#summary-box');
+  summaryBox.style.display = 'block';
+};
+
+
+// Call the updateSummary function after the results table has been updated with the search results
+input.addEventListener('keyup', () => {
+  // Code to search the CSV data and display the results...
+
+  // Call the updateSummary function after the results table has been updated only if there are search results
+  if (results.length > 0) {
+    updateSummary();
+  }
 });
+
+  });
+  
+
+
+  
+});
+
+
+

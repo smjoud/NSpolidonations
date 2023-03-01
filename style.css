@@ -124,9 +124,16 @@ width:80%
     border: 1px solid #dee2e6;
   }
   
-
+  .table.mx-auto.results {
+display: inline-table;
+  }
   
   @media (max-width: 767px) {
+
+    .table.mx-auto.results {
+display:block !important;
+overflow: auto !important;
+    }
   
     input[type="search"] {
       height: 40px;
@@ -142,17 +149,15 @@ width:80%;
 margin-bottom:.2rem;
     }
 
-    .fa-search {
-display: none;
-  
-}
-
-.container {
-background-color: red;
-}
+    .fa-magnifying-glass::before, .fa-search::before {
+display:none;
+    }
 
 .form-inline .form-control{
 width:100%;
 }
+
+.form-inline.justify-content-center{
+  width:100%;
   }
   

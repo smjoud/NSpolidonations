@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSV Data Display</title>
+  <style>
+    /* Basic table styling - adjust as needed */
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <input type="text" placeholder="Search...">
+  </form>
+
+  <div id="summary-box" style="display: none;"> 
+    <h2>Summary</h2>
+    <p>Number of Donations: <span id="number-of-donations"></span></p>
+    <p>PC Total: <span id="pc-total"></span></p>
+    <p>NDP Total: <span id="ndp-total"></span></p>
+    <p>Liberal Total: <span id="liberal-total"></span></p>
+  </div>
+
+  <table id="results">
+    <thead>
+      <tr id="column-names"></tr> </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch('data.csv')
+      .then(response => response.text())
+      .then(csvData => {
+        const lines = csvData.split('\n');
+        const columnNames = lines[0].split(',');
+
+        // Display all columns in the header row
+        const columnNamesRow = document.getElementById('column-names');
+        columnNamesRow.innerHTML = ''; // Clear any existing headers
+        columnNames.forEach(name => {
+          const th = document.createElement('th');
+          th.innerText = name;
+          th.dataset.column = columnNames.indexOf(name); // Add data-column for sorting
+          th.addEventListener('click', () => {
+            sortTable(columnNames.indexOf(name));
+          });
+          columnNamesRow.appendChild(th);
+        });
+
+        // Display all columns in the data rows
+        const resultsTable = document.getElementById('results');
+        lines.slice(1).forEach(line => { // Start from the second line (data)
+          const rowData = line.split(',');
+          const tr = document.createElement('tr');
+
+          rowData.forEach(cellData => {
+            const td = document.createElement('td');
+            td.innerText = cellData;
+            tr.appendChild(td);
+          });
+
+          // Apply row coloring based on conditions
+          if (rowData[4] === "PC") {
+            tr.style.backgroundColor = "#639ee0";
+          } else if (rowData[4].includes("Liberal")) {
+            tr.style.backgroundColor = "red";
+          } else if (rowData[4].includes("NDP")) {
+            tr.style.backgroundColor = "orange";
+          } else if (rowData[4].includes("Green")) {
+            tr.style.backgroundColor = "green";
+          } else if (rowData[4].includes("Atlantica")) {
+            tr.style.backgroundColor = "purple";
+          }
+
+          resultsTable.querySelector('tbody').appendChild(tr); 
+        });
+
+        // Filtering, sorting, and summary logic
+        const form = document.querySelector('form');
+        const input = form.querySelector('input');
+
+        input.addEventListener('keyup', () => {
+          // ... (Your existing filtering logic goes here)
+
+          updateSummary(); // Update summary after filtering if results are found
+        });
+
+        updateSummary(); // Calculate initial summary
+
+        // Sorting function
+        function sortTable(columnIndex, asc = true) {
+          const table = document.getElementById('results');
+          const tbody = table.querySelector('tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+
+          rows.sort((a, b) => {
+            const aVal = a.children[columnIndex].textContent.trim();
+            const bVal = b.children[columnIndex].textContent.trim();
+            return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          });
+
+          tbody.innerHTML = '';
+          rows.forEach(row => tbody.appendChild(row));
+        }
+      });
+  </script>
+</body>
+</html>

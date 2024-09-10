@@ -4,6 +4,8 @@ fetch('data.csv')
   // Store the data in a variable
   const data = csvData;
 
+  
+
   // Split the data by new line characters
   const lines = data.split('\n');
 
@@ -119,7 +121,22 @@ results.forEach(result => {
     if (result.split(',')[4].includes("Atlantica")) {
       tr.style.backgroundColor = "purple";
     }
-  
+
+    if (result.split(',')[4].includes("CPC")) {
+      tr.style.backgroundColor = "#4B5BE8";
+    }
+
+    if (result.split(',')[4].includes("LPC")) {
+      tr.style.backgroundColor = "#CE3409";
+    }
+
+    if (result.split(',')[4].includes("NDP-CA")) {
+      tr.style.backgroundColor = "#F57200";
+    }
+
+    if (result.split(',')[4].includes("PPC")) {
+      tr.style.backgroundColor = "#A200B1";
+    }
   
   // Iterate over each column, skipping the 5th column but including the 6th column
   const columns = result.split(',');
@@ -160,10 +177,31 @@ const updateSummary = () => {
     .reduce((total, amount) => total + amount, 0)
     .toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
+    const cpcTotal = Array.from(document.querySelectorAll('#results tr td:nth-child(5)'))
+      .filter(td => td.innerText === 'CPC')
+      .map(td => parseInt(td.previousElementSibling.innerText))
+      .reduce((total, amount) => total + amount, 0)
+      .toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    
+    const ndpcaTotal = Array.from(document.querySelectorAll('#results tr td:nth-child(5)'))
+      .filter(td => td.innerText === 'NDP-CA')
+      .map(td => parseInt(td.previousElementSibling.innerText))
+      .reduce((total, amount) => total + amount, 0)
+      .toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+    const LPCTotal = Array.from(document.querySelectorAll('#results tr td:nth-child(5)'))
+      .filter(td => td.innerText === 'LPC')
+      .map(td => parseInt(td.previousElementSibling.innerText))
+      .reduce((total, amount) => total + amount, 0)
+      .toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
   document.querySelector('#number-of-donations').innerText = numberOfDonations;
   document.querySelector('#pc-total').innerText = pcTotal;
   document.querySelector('#ndp-total').innerText = ndpTotal;
   document.querySelector('#liberal-total').innerText = liberalTotal;
+  document.querySelector('#cpc-total').innerText = cpcTotal;
+  document.querySelector('#ndpca-total').innerText = ndpcaTotal;
+  document.querySelector('#LPC-total').innerText = LPCTotal;
 
   const summaryBox = document.querySelector('#summary-box');
   summaryBox.style.display = 'block';
